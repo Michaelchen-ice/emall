@@ -207,7 +207,8 @@ public class C_Order {
 
     @RequestMapping(value = "cart_to_order", method = RequestMethod.POST)
     public String cartToOrder(HttpServletRequest request, RedirectAttributes attributes) {
-        int b_s_id = 1;
+        HttpSession session = request.getSession();
+        int b_s_id = Integer.parseInt(session.getAttribute("b_s_id").toString());
         Logistics_Info logistics_info = initLogistics_Info(request);
         int flag = 0;
 //        flag = s_order.goodsToOrder(order_info, order_item_info, logistics_info);

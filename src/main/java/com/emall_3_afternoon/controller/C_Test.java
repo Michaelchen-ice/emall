@@ -93,4 +93,9 @@ public class C_Test {
     public String orddder() {
         return "cart_order_form";
     }
+
+    @RequestMapping("getUser")
+    public String userInfo() {
+        return "user_info";
+    }
 }
