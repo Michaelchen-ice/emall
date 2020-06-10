@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            code = ""
+            $.ajax({
+                type: "get",
+                url: "http://127.0.0.1:8080/get_field_list",
+                data: {"dictionary_code": code},
+                success: function (data) {
+                    $("#one").empty();
+                    for (i in data) {
+                        var options = "<option value=" + data[i].dictionary_code + ">"
+                            + data[i].field_name + "</option>"
+                        $("#one").append(options);
+                    }
+                    $("#one").change()
+                }
+            })
+            //init two
+            $("#one").change(function () {
+                code = $("#one").val()
+                $.ajax({
+                    type: "get",
+                    url: "http://127.0.0.1:8080/get_field_list",
+                    data: {"dictionary_code": code},
+                    success: function (data) {
+                        $("#two").empty();
+                        for (i in data) {
+                            //alert(data[i].dictionary_code + "|" +　data[i].class_name)
+                            var options = "<option value=" + data[i].dictionary_code + ">"
+                                + data[i].field_name + "</option>"
+                            $("#two").append(options);
+                        }
+                        $("#two").change()
+                    }
+                })
+            })
+            //init three
+            $("#two").change(function () {
+                code = $("#two").val()
+                $.ajax({
+                    type: "get",
+                    url: "http://127.0.0.1:8080/get_field_list",
+                    data: {"dictionary_code": code},
+                    success: function (data) {
+                        $("#three").empty();
+                        for (i in data) {
+                            //alert(data[i].dictionary_code + "|" +　data[i].class_name)
+                            var options = "<option value=" + data[i].dictionary_code + ">"
+                                + data[i].field_name + "</option>"
+                            $("#three").append(options);
+                        }
+                    }
+                })
+            })
+        })
+
+    </script>
+</head>
+<body>
+<div>
+    <form action="/show_input_goods">
+        <div><select id="one" name="one"></select>
+        </div>
+        <div><select id="two" name="two"></select></div>
+        <div><select id="three" name="three"></select></div>
+        <input type="submit" value="提交">
+    </form>
+</div>
+</body>
+</html>

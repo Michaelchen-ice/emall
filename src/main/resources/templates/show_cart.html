@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+     <link rel="stylesheet" th:href="@{/bootstrap/js/bootstrap.min.js}"/>
+     <link rel="stylesheet" th:href="@{/js/jquery-1.12.1.min.js}"/> -->
+    <link th:href="@{/css/all.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link th:href="@{/css/mall_normal.css}" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #total {
+            color: rgb(255, 68, 0);
+            display: inline;
+            font-family: tohoma, arial;
+            font-size: 22px;
+            font-stretch: 100%;
+            font-style: normal;
+            font-variant-caps: normal;
+            font-variant-east-asian: normal;
+            font-variant-ligatures: normal;
+            font-variant-numeric: normal;
+            font-weight: 700;
+            height: auto;
+            line-height: 48px;
+            padding-bottom: 0px;
+            padding-left: 3px;
+            padding-right: 3px;
+            padding-top: 0px;
+            width: auto;
+        }
+
+        #ti {
+            display: inline;
+            font-family: tohoma, arial;
+            font-weight: 700;
+            height: auto;
+            line-height: 48px;
+        }
+
+        #J_Go {
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: rgb(255, 68, 0);
+            background-image: none;
+            background-origin: padding-box;
+            background-position-x: 0%;
+            background-position-y: 0%;
+            background-size: auto;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            display: inline-block;
+            font-family: "Lantinghei SC", "Microsoft Yahei";
+            font-size: 20px;
+            font-stretch: 100%;
+            font-style: normal;
+            font-variant-caps: normal;
+            font-variant-east-asian: normal;
+            font-variant-ligatures: normal;
+            font-variant-numeric: normal;
+            font-weight: 400;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration-color: rgb(255, 255, 255);
+            text-decoration-line: none;
+            text-decoration-style: solid;
+            width: 120px;
+            float: right;
+        }
+
+        #J_No {
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: rgb(176, 176, 176);
+            background-image: none;
+            background-origin: padding-box;
+            background-position-x: 0%;
+            background-position-y: 0%;
+            background-size: auto;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+            border-left-color: rgb(231, 231, 231);
+            border-left-style: solid;
+            border-left-width: 1px;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            color: rgb(255, 255, 255);
+            cursor: not-allowed;
+            display: inline-block;
+            font-family: "Lantinghei SC", "Microsoft Yahei";
+            font-size: 20px;
+            font-stretch: 100%;
+            font-style: normal;
+            font-variant-caps: normal;
+            font-variant-east-asian: normal;
+            font-variant-ligatures: normal;
+            font-variant-numeric: normal;
+            font-weight: 400;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration-color: rgb(255, 255, 255);
+            text-decoration-line: none;
+            text-decoration-style: solid;
+            width: 119px;
+            float: right;
+        }
+
+        #mm {
+            color: rgb(255, 68, 0);
+            display: block;
+            font-family: tahoma, arial, "Hiragino Sans GB", 宋体, sans-serif;
+            font-size: 12px;
+            font-stretch: 100%;
+            font-style: normal;
+            font-variant-caps: normal;
+            font-variant-east-asian: normal;
+            font-variant-ligatures: normal;
+            font-variant-numeric: normal;
+            font-weight: 700;
+            height: 19px;
+            line-height: 18px;
+            list-style-image: none;
+            list-style-position: outside;
+            list-style-type: none;
+            padding-top: 10px;
+            text-align: left;
+        }
+
+        .title:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body>
+
+<div class="bbb">
+    <div style="width: 55%;height:100%;margin-left: 21%">
+			<span style="">
+                <a href="" th:href="@{/user_index}" class="ttt">
+					<i class="fas fa-user" style="margin-right: 3px" th:text="${session.username}"></i>
+				</a>
+			</span>
+        <span style="float: right;">
+				<a href="" th:href="@{/show_cart}" class="ttt" style="">
+					<i class="fas fa-shopping-cart" style="margin-right: 3px"></i>
+					购物车
+				</a>
+			</span>
+    </div>
+</div>
+<div class="hea">
+    <div style="width: 65%;height:100%;margin-left: 10%">
+        <img th:src="@{/pic/logo1.png}" style="margin-left: 17%;padding-top: 0px" alt="">
+        <span><a href="" th:href="@{/showGood_index}" class="la">首页</a></span>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 2%;">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row" style="display:inline;font-family:tohoma, arial;font-weight:700;">
+                <div class="col-md-1">
+                    <input type="checkbox" name="all" class="all">全选
+                </div>
+                <div class="col-md-3">
+                    图片信息
+                </div>
+                <div class="col-md-3">
+                    商品信息
+                </div>
+                <div class="col-md-1">
+                    单价
+                </div>
+                <div class="col-md-1">
+                    数量
+                </div>
+                <div class="col-md-1">
+                    金额
+                </div>
+                <div class="col-md-2">
+                    操作
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:each="item_store, itemState : ${cart_item_list}">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <input type="checkbox" th:id="${item_store.store_id}" name="shop"
+                           th:class="'store_info all_select'+' ' +${item_store.store_id}">店铺：
+                    <a href="#" th:text="${item_store.store_name}"></a>
+                </h3>
+            </div>
+            <div th:each="item_goods, itemState : ${item_store.goods_itemList}">
+                <div class="panel-body">
+                    <div class="col-md-1 all_select">
+                        <input type="checkbox" th:xxx="check+${item_goods.goods_info.goods_id}"
+                               th:miao="${item_goods.goods_info.goods_id}" th:wang="${item_goods.account}"
+                               th:value="${#numbers.formatDecimal(item_goods.goods_money,1,'COMMA',2,'POINT')}"
+                               th:class="'goods_info' +' '+${item_store.store_id}" name="goods_info">
+                    </div>
+                    <div class="col-md-2">
+                        <img src="" th:src="${'/pic/'+item_goods.goods_info.goods_photo_path_infoList[0].path_name}"
+                             width="80px" height="80px">
+                    </div>
+                    <div class="col-md-3 title" th:text="${item_goods.goods_info.goods_name}"
+                         th:title="'/goodsDetails/'+${item_goods.goods_info.goods_id}">
+                    </div>
+                    <div class="col-md-1">
+                        <div id="mm" style="color: #9c9c9c;text-decoration: line-through;padding-top: 3px;"
+                             th:text="${'￥'+ #numbers.formatDecimal(item_goods.goods_info.goods_price,1,'COMMA',2,'POINT')}"></div>
+                        <div id="mm" th:xxx="${item_goods.goods_info.goods_id}" style="color: black;padding-top: 3px;"
+                             th:text="${'￥'+ #numbers.formatDecimal(item_goods.goods_info.goods_actual_price,1,'COMMA',2,'POINT')}"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="row">
+                            <div class="form-inline">
+                                <div id="mm" style="color: black">
+                                    <button th:onclick="'min('+ ${item_goods.goods_info.goods_id} +')'"
+                                            onclick="min(this)">-
+                                    </button>
+                                    <input type="text" size="1" name="num" style="text-align: center"
+                                           th:class="${item_goods.goods_info.goods_id}"
+                                           th:value="${item_goods.account}">
+                                    <button onclick="add(this)"
+                                            th:onclick="'add('+ ${item_goods.goods_info.goods_id} +')'">+
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div id="mm" class="mon" th:aaa="${item_goods.goods_info.goods_id}" th:class="mon"
+                             th:text="${'￥'+ #numbers.formatDecimal(item_goods.goods_money,1,'COMMA',2,'POINT')}"></div>
+                    </div>
+                    <div class="m" th:id="${item_goods.goods_info.goods_id}" style="display: none"
+                         th:text="${item_goods.goods_money}">
+                    </div>
+                    <div class="col-md-2">
+                        <div><a href="" id="mm" style="color: black"
+                                th:href="${'/delete_goods_in_cart/'+item_goods.goods_info.goods_id}+'/'+${item_store.store_id}">删除</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-1" id="ti">
+                    <input type="checkbox" name="all" class="all">全选
+                </div>
+                <div class="col-md-1" id="ti">
+                    删除
+                </div>
+                <div class="col-md-2" id="ti">
+                    清除失效商品信息
+                </div>
+                <div class="col-md-2" id="ti">
+                    移入收藏夹
+                </div>
+                <div class="col-md-1" id="ti">
+                    已选商品
+                </div>
+                <div class="col-md-1" id="ti">
+                    合计:
+                </div>
+                <div class="col-md-1" id="total">
+
+                </div>
+                <div class="col-md-2">
+                    <a href="javascript:void(0);" id="J_Go" class="submit-btn" aria-label="请注意如果没有选择宝贝，将无法结算"><span>结&nbsp;算</span><b></b></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <form action="go_to_cart_order_form" method="post" id="array_send">
+        <input type="hidden" name="json" class="kkkkk">
+    </form>
+
+    <!--<div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <input type="checkbox" class="store_info">店铺：苏宁易购天猫店
+            </h3>
+        </div>
+    <div class="panel-body">
+        <div class="col-md-1" >
+            <input type="checkbox" class="goods_info">
+        </div>
+        <div class="col-md-3">
+            <img src="#">
+        </div>
+        <div class="col-md-3" >
+            【3期免息 再减500元】Apple/苹果 iPhone 11 移动联通电信4G全网通智能手机正品苏宁易购官方旗舰店苹果11
+        </div>
+        <div class="col-md-1" >
+            <div>￥5499.01</div>
+            <div>￥5499.00</div>
+        </div>
+        <div class="col-md-1" >
+            <div class="row">
+                <div class="form-inline">
+                    <div>+<input type="text" size="1" value="2">-</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1" >
+            <div>￥5499.00</div>
+        </div>
+            <div class="col-md-2" >
+                <div><a href="#">删除</a></div>
+            </div>
+        </div>
+    </div>-->
+</div>
+<script>
+    // function formatCurrency(num) {
+    //     num = num.toString().replace(/\$|\,/g,'');
+    //     if(isNaN(num))
+    //         num = "0";
+    //     sign = (num == (num = Math.abs(num)));
+    //     num = Math.floor(num*100+0.50000000001);
+    //     cents = num%100;
+    //     num = Math.floor(num/100).toString();
+    //     if(cents<10)
+    //         cents = "0" + cents;
+    //     for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
+    //         num = num.substring(0,num.length-(4*i+3))+','+
+    //         num.substring(num.length-(4*i+3));
+    //     return (((sign)?'':'-') + num + '.' + cents);
+    // }
+
+    $(".submit-btn").on('click', function (e) {
+        var arry1 = new Array();
+        var arry2 = new Array();
+        $("input:checkbox[name=goods_info]:checked").each(function (key) {
+            arry1[key] = $(this).attr("miao");
+            arry2[key] = $(this).attr("wang");
+        });
+
+        var json = JSON.stringify({
+            json: {
+                "id": arry1,    // 字符串
+                "sum": arry2
+            }
+        });
+
+        $(".kkkkk").val(json);
+        $("#array_send").submit();
+    });
+
+    $(".title").on('click', function (e) {
+        var link = $(e.target).attr("title");
+        window.open(link);
+    });
+
+    function x() {
+        var btns = [];
+        $("input:checkbox[name=goods_info]:checked").each(function (key) {
+            btns[key] = $(this).val();
+        });
+        var m = 0.0;
+        var i = 0;
+        for (; i < btns.length; i++) {
+            m = m + Number(btns[i]);
+        }
+        m = m.toFixed(2);
+        $("#total").text("￥" + m);
+    }
+
+    function no() {
+        var btn = $(".submit-btn");
+        btn.attr("id", "J_No");
+    }
+
+    function yes() {
+        var btn = $(".submit-btn");
+        btn.attr("id", "J_Go");
+    }
+
+
+    function checkCheckBox() {
+        var len = $("input:checkbox[name=goods_info]:checked").length;
+        if (len > 0) {
+            yes();
+        } else {
+            no();
+        }
+    }
+
+    function add(e) {
+        var num = $("input[class=" + e + "]");
+        var n = Number(num.val()) + 1;
+        num.val(n);
+        buttonNumChange(num);
+    }
+
+    function min(e) {
+        var num = $("input[class=" + e + "]");
+        if (num.val() == 1) {
+        } else {
+            var n = Number(num.val()) - 1;
+            num.val(n);
+            buttonNumChange(num);
+        }
+    }
+
+    function buttonNumChange(e) {
+        var target = $(e).attr("class");
+        var num = $(e).val();
+        var money = $("div[xxx=" + target + "]").text();
+        money = money.substr(1);
+        var t = (num * money).toFixed(2);
+        $("input[xxx=check" + target + "]").val(t);
+        $("input[xxx=check" + target + "]").attr("wang", num);
+        var total = "￥" + (num * money).toFixed(2);
+        $("div[aaa=" + target + "]").text(total);
+        checkCheckBox();
+        x();
+        updateGoods(num, target);
+    }
+
+    function numXmoney(e) {
+        var target = $(e.target).attr("class");
+        var num = $(e.target).val();
+        var money = $("div[xxx=" + target + "]").text();
+        money = money.substr(1);
+        var t = (num * money).toFixed(2);
+        $("input[xxx=check" + target + "]").val(t);
+        $("input[xxx=check" + target + "]").attr("wang", num);
+        var total = "￥" + (num * money).toFixed(2);
+        $("div[aaa=" + target + "]").text(total);
+        checkCheckBox();
+        x();
+        updateGoods(num, target);
+    }
+
+    function updateGoods(num, target) {
+        $.ajax({
+            type: "POST",            //请求的方式
+            url: "/update_cart",  //请求url
+            data: JSON.stringify({"good_sum": num, "good_id": target}),               //前端向后端传送的数据
+            dataType: "json",       //数据格式json
+            contentType: 'application/json',
+            error: function () {
+            },
+            success: function () {
+            }
+        });
+    }
+
+    $("input:text[name=num]").change(function (e) {
+        numXmoney(e);
+    });
+
+    $("input:checkbox[name=all]").on('click', function (e) {
+        var isChecked = $(this).prop("checked");
+        $("input[name=goods_info]").prop("checked", isChecked);
+        checkCheckBox();
+        x();
+    });
+
+    $("input:checkbox[name=shop]").on('click', function (e) {
+        var isChecked = $(e.target).prop("checked");
+        var a = $(this).attr("id");
+        $("." + a).prop("checked", isChecked);
+        checkCheckBox();
+        x();
+    });
+
+    $("input:checkbox[name=goods_info]").change(function () {
+        checkCheckBox();
+        x();
+    });
+
+    $(document).ready(function () {
+        x();
+        checkCheckBox();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+
+.bbb {
+    background-color: rgb(245, 245, 245);
+    border-bottom-color: rgb(238, 238, 238);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    color: rgb(109, 109, 109);
+    display: block;
+    font-family: tahoma, arial, "Hiragino Sans GB", 宋体, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-weight: 400;
+    height: 35px;
+    line-height: 18px;
+    width: 100%;
+    z-index: auto;
+}
+
+.ttt {
+    color: rgb(108, 108, 108);
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: tahoma, arial, "Hiragino Sans GB", 宋体, sans-serif;
+    font-size: 12px;
+    font-stretch: 100%;
+    font-style: normal;
+    font-weight: 400;
+    height: 35px;
+    letter-spacing: 0.8px;
+    line-height: 35px;
+    margin-right: 7px;
+    max-width: 98px;
+    outline-color: rgb(108, 108, 108);
+    outline-width: 0px;
+    text-align: left;
+    text-decoration-color: rgb(108, 108, 108);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-overflow: ellipsis;
+    visibility: visible;
+    white-space: nowrap;
+}
+
+.ttt:hover {
+    color: rgb(255, 68, 0);
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: tahoma, arial, "Hiragino Sans GB", 宋体, sans-serif;
+    font-size: 12px;
+    font-stretch: 100%;
+    font-style: normal;
+    font-weight: 400;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 7px;
+    max-width: 98px;
+    outline-color: rgb(255, 68, 0);
+    outline-style: none;
+    outline-width: 0px;
+    text-align: left;
+    text-decoration-color: rgb(255, 68, 0);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-overflow: ellipsis;
+    visibility: visible;
+    white-space: nowrap;
+}
+
+.hea {
+    background-color: rgb(255, 68, 1);
+    background-origin: padding-box;
+    border-bottom-color: rgb(231, 231, 231);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    color: rgb(109, 109, 109);
+    display: block;
+    font-family: tahoma, arial, "Hiragino Sans GB", 宋体, sans-serif;
+    font-size: 12px;
+    font-stretch: 100%;
+    font-weight: 400;
+    height: 88px;
+    line-height: 18px;
+    padding-bottom: 12px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 10px;
+    position: relative;
+    z-index: 5;
+}
+
+.logo {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+
+}
+
+.la {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: inline-block;
+    font-family: tahoma;
+    font-size: 14px;
+    font-stretch: 100%;
+    font-weight: 400;
+    height: 36px;
+    line-height: 36px;
+    outline-color: rgb(255, 255, 255);
+    outline-style: none;
+    outline-width: 0px;
+    padding-bottom: 0px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 0px;
+    text-align: center;
+    text-decoration-color: rgb(255, 255, 255);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    width: 80px;
+    margin-left: 5%;
+}
+
+.la:hover {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: inline-block;
+    font-family: tahoma;
+    font-size: 14px;
+    font-stretch: 100%;
+    font-weight: 400;
+    height: 36px;
+    line-height: 36px;
+    outline-color: rgb(255, 255, 255);
+    outline-style: none;
+    outline-width: 0px;
+    padding-bottom: 0px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 0px;
+    text-align: center;
+    text-decoration-color: rgb(255, 255, 255);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    width: 80px;
+    margin-left: 5%;
+}
+

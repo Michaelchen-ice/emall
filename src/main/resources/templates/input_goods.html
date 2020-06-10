@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+    <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var dictionary_code = $("#dictionary_code").val()
+            //alert(dictionary_code)
+            $.ajax({
+                type: "get",
+                url: "http://127.0.0.1:8080/get_field_value",
+                data: {"dictionary_code": dictionary_code},
+                success: function (data) {
+                    //alert(data)
+                    var split_values = data.split("\|")
+                    //alert(split_values.length)//把数组长度送入一个隐藏框
+                    $("#field_value_length").val(split_values.length)
+                    for (i in split_values) {
+                        var label = "<label>" + split_values[i] + "：" + "</label>"
+                        var html = "<input type='text' id=field" + i + " name=field" + i + ">"
+                        var hidden_html = "<input type='hidden' name=hidden_field" + i + " value=" + split_values[i] + ">"
+                        var row_html = label + html + hidden_html
+                        if ((i + 1) % 2 == 0)
+                            row_html = "<p>" + row_html + "</p>"
+                        $("#auto_input_arr").append(row_html);
+                    }
+                }
+            })
+            //用class的css可能更好
+            $(".btn_upload").click(function () {
+
+            })
+            $("#btn_upload_one, #btn_upload_two, #btn_upload_three, #btn_upload_four, #btn_upload_five").click(function () {
+                var btn_who = $(this).attr("id")
+                //alert(btn_who)
+                var arr = btn_who.split("\_")
+                //alert(arr[2])
+                var image_who = "#image_" + arr[2]
+                var upload_who = "upload_" + arr[2]
+                var url_who = "#url_" + arr[2] + " img"
+                //alert(upload_who)
+                var form = new FormData();
+                form.append("file", document.getElementById(upload_who).files[0]);
+                $.ajax({
+                    url: "http://127.0.0.1:8080/image_upload",
+                    data: form,
+                    type: "POST",
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        //alert(data)
+                        var pic = data;
+                        $(url_who).attr("src", pic);
+                        $(image_who).val(data)
+                    }
+                })
+            })
+
+        })
+    </script>
+</head>
+<body>
+<div>
+    <form action="insert_goods_info" method="post">
+        <div id="goods_base_info" class="form-group col-md-6">
+            <p>商品名称：<input type="text" name="goods_name" id="goods_name"></p>
+            <p>商品描述：<input type="text" name="goods_describe" id="goods_describe"></p>
+            <p>商品价格：<input type="text" name="goods_price" id="goods_price"></p>
+            <p>库存数量：<input type="text" name="goods_stock" id="goods_stock"></p>
+            <input type="hidden" id="dictionary_code" name="dictionary_code" th:value="${dictionary_code}">
+            <input type="hidden" id="field_value_length" name="field_value_length">
+            <input type="hidden" name="image_one" id="image_one">
+            <input type="hidden" name="image_two" id="image_two">
+            <input type="hidden" name="image_three" id="image_three">
+            <input type="hidden" name="image_four" id="image_four">
+            <input type="hidden" name="image_five" id="image_five">
+        </div>
+        <div id="auto_input_arr"> <!--动态生成的input-->
+        </div>
+        <button id="btn" class="btn btn-primary">提交</button>
+    </form>
+    <div id="image_uploads">
+        <div class="image_upload form-group col-md-6">
+            <div id="image_upload_one" width="100" height="100"></div>
+            <div><input type="file" id="upload_one"></div>
+            <p id="url_one"><img src="" width=200></p>
+            <div>
+                <button id="btn_upload_one" class="btn btn-primary btn_upload">上传</button>
+            </div>
+        </div>
+        <div class="image_upload form-group col-md-6">
+            <div id="image_upload_two" width="100" height="100"></div>
+            <div><input type="file" id="upload_two"></div>
+            <p id="url_two"><img src="" width=200></p>
+            <div>
+                <button id="btn_upload_two" class="btn btn-primary btn_upload">上传</button>
+            </div>
+        </div>
+        <div class="image_upload form-group col-md-6">
+            <div id="image_upload_one_three" width="100" height="100"></div>
+            <div><input type="file" id="upload_three"></div>
+            <p id="url_three"><img src="" width=200></p>
+            <div>
+                <button id="btn_upload_three" class="btn btn-primary btn_upload">上传</button>
+            </div>
+        </div>
+        <div class="image_upload form-group col-md-6">
+            <div id="image_upload_four" width="100" height="100"></div>
+            <div><input type="file" id="upload_four"></div>
+            <p id="url_four"><img src="" width=200></p>
+            <div>
+                <button id="btn_upload_four" class="btn btn-primary btn_upload">上传</button>
+            </div>
+        </div>
+        <div class="image_upload form-group col-md-6">
+            <div id="image_upload_five" width="100" height="100"></div>
+            <div><input type="file" id="upload_five"></div>
+            <p id="url_five"><img src="" width=200></p>
+            <div>
+                <button id="btn_upload_five" class="btn btn-primary btn_upload">上传</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

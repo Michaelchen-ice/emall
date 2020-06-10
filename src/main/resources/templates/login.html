@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>E-Mall Management System</title>
+
+    <link href="css/all.css" th:href="@{/css/all.css}" rel="stylesheet">
+
+    <link type="text/css" href="/css/index.css" th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<h1 class="title">E-mall User Login</h1>
+<!---728x90--->
+<div class="twoWindows">
+    <!---728x90--->
+    <div class="mid-class">
+        <div class="left-side">
+            <h3>Submit your Login applications</h3>
+            <p>You can edit your personal information in this system. If your login successfully, you can go to personal
+                area.</p>
+            <img src="/images/b11.png" th:href="@{/images/b11.png}" width="60%" height="auto" alt="">
+        </div>
+
+        <div class="txt-right-side">
+
+            <h2> Sign In Here </h2>
+
+            <form action="check" th:action="@{/check}" method="post">
+
+                <div class="put">
+                    <span class="fa fa-phone" aria-hidden="true"></span>
+                    <input type="text" name="tel" placeholder="Telephone" required="">
+                </div>
+
+                <div class="put">
+                    <span class="fa fa-lock" aria-hidden="true"></span>
+                    <input type="password" name="pwd" placeholder="Password" required="">
+                </div>
+
+                <div class="main-two">
+                    <div class="left-side-forget">
+                        <input type="checkbox" class="checked">
+                        <span class="remenber-me">Remember me </span>
+                    </div>
+                    <div class="right-side-forget">
+                        <a href="#" class="for">Forgot password...?</a>
+                    </div>
+                </div>
+
+                <div class="btnn">
+                    <button type="submit">Sign In</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!---728x90--->
+<footer class="copyrigh-wthree">
+    <p>
+        © 2020 E-mall Personal System. All Rights Reserved | Design by
+        <a href="MichaelChen" target="_blank">MichaelChen</a>
+    </p>
+</footer>
+</body>
+
+</html>

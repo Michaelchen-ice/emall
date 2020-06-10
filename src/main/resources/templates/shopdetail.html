@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>详情页面</title>
+    <style>
+        #jul {
+            border-top-color: rgb(255, 255, 255);
+            border-top-style: solid;
+            border-top-width: 1px;
+            color: rgb(64, 64, 64);
+            display: block;
+            font-family: tahoma, arial, 微软雅黑, sans-serif;
+            font-size: 12px;
+            font-stretch: 100%;
+            font-style: normal;
+            font-variant-caps: normal;
+            font-variant-east-asian: normal;
+            font-variant-ligatures: normal;
+            font-variant-numeric: normal;
+            font-weight: 400;
+            height: 168px;
+            line-height: 18px;
+            list-style-image: none;
+            list-style-position: outside;
+            list-style-type: none;
+            margin-block-end: 0px;
+            margin-block-start: 0px;
+            margin-bottom: 0px;
+            margin-inline-end: 0px;
+            margin-inline-start: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 18px;
+            padding-inline-start: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 0px;
+            text-indent: 0px;
+            width: 748px;
+            zoom: 1;
+        }
+
+        #jli {
+            color: rgb(102, 102, 102);
+            display: block;
+            float: left;
+            font-family: tahoma, arial, 微软雅黑, sans-serif;
+            font-size: 12px;
+            font-stretch: 100%;
+            font-style: normal;
+            font-variant-caps: normal;
+            font-variant-east-asian: normal;
+            font-variant-ligatures: normal;
+            font-variant-numeric: normal;
+            font-weight: 400;
+            height: 18px;
+            line-height: 18px;
+            list-style-image: none;
+            list-style-position: outside;
+            list-style-type: none;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 15px;
+            margin-top: 10px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            text-align: left;
+            text-indent: 0px;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+            width: 220px;
+        }
+
+        .tb-text {
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: rgb(255, 255, 255);
+            background-image: none;
+            background-origin: padding-box;
+            background-position-x: 0%;
+            background-position-y: 0%;
+            background-repeat-x:;
+            background-repeat-y:;
+            background-size: auto;
+            border-bottom-color: rgb(204, 204, 204);
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-image-outset: 0px;
+            border-image-repeat: stretch;
+            border-image-slice: 100%;
+            border-image-source: none;
+            border-image-width: 1;
+            border-left-color: rgb(204, 204, 204);
+            border-left-style: solid;
+            border-left-width: 1px;
+            border-right-color: rgb(204, 204, 204);
+            border-right-style: solid;
+            border-right-width: 1px;
+            border-top-color: rgb(204, 204, 204);
+            border-top-style: solid;
+            border-top-width: 1px;
+            color: rgb(102, 102, 102);
+            cursor: text;
+            display: block;
+            float: left;
+            font-family: tahoma, arial, "Hiragino Sans GB", 宋体, sans-serif;
+            font-size: 16px;
+            font-stretch: 100%;
+            font-style: normal;
+            font-variant-caps: normal;
+            font-variant-east-asian: normal;
+            font-variant-ligatures: normal;
+            font-variant-numeric: normal;
+            font-weight: 400;
+            height: 26px;
+            letter-spacing: normal;
+            line-height: 26px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            outline-color: rgb(102, 102, 102);
+            outline-style: none;
+            outline-width: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            text-align: center;
+            text-indent: 0px;
+            text-rendering: auto;
+            text-shadow: none;
+            text-size-adjust: 100%;
+            text-transform: none;
+            width: 48px;
+            word-spacing: 0px;
+            writing-mode: horizontal-tb;
+        }
+
+        .tb-reduce {
+            background-color: rgb(237, 237, 237);
+            border-bottom-color: rgb(204, 204, 204);
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-image-repeat: stretch;
+            border-image-source: none;
+            border-left-color: rgb(204, 204, 204);
+            border-left-style: solid;
+            border-left-width: 1px;
+            border-right-color: rgb(204, 204, 204);
+            border-right-style: none;
+            border-right-width: 0px;
+            border-top-color: rgb(204, 204, 204);
+            border-top-style: solid;
+            border-top-width: 1px;
+            display: block;
+            float: left;
+            font-size: 12px;
+            font-stretch: 100%;
+            font-style: normal;
+            font-variant-caps: normal;
+            font-variant-east-asian: normal;
+            font-variant-ligatures: normal;
+            font-variant-numeric: normal;
+            font-weight: 400;
+            height: 26px;
+            line-height: 26px;
+            outline-color: rgb(204, 204, 204);
+            outline-style: none;
+            outline-width: 0px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            text-align: center;
+            text-decoration-line: none;
+            text-decoration-style: solid;
+            user-select: none;
+            vertical-align: top;
+            width: 26px;
+        }
+
+        .tb-increase {
+            background-color: rgb(237, 237, 237);
+            border-bottom-color: rgb(204, 204, 204);
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-image-repeat: stretch;
+            border-image-source: none;
+            border-left-color: rgb(60, 60, 60);
+            border-left-style: none;
+            border-left-width: 0px;
+            border-right-color: rgb(204, 204, 204);
+            border-right-style: solid;
+            border-right-width: 1px;
+            border-top-color: rgb(204, 204, 204);
+            border-top-style: solid;
+            border-top-width: 1px;
+            color: rgb(60, 60, 60);
+            cursor: pointer;
+            display: block;
+            float: left;
+            font-size: 12px;
+            font-stretch: 100%;
+            font-style: normal;
+            font-variant-caps: normal;
+            font-variant-east-asian: normal;
+            font-variant-ligatures: normal;
+            font-variant-numeric: normal;
+            font-weight: 400;
+            height: 26px;
+            line-height: 26px;
+            margin-right: 8px;
+            outline-color: rgb(60, 60, 60);
+            outline-style: none;
+            outline-width: 0px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            text-align: center;
+            text-decoration-line: none;
+            text-decoration-style: solid;
+            user-select: none;
+            vertical-align: top;
+            width: 26px;
+        }
+    </style>
+    <link href="css/shopdetail.css" th:href="@{/css/shopdetail.css}" rel="stylesheet" type="text/css">
+
+    <script src="js/jquery-1.9.1.min.js" th:src="@{/js/jquery-1.9.1.min.js}"></script>
+    <script src="js/common.js" th:src="@{/js/common.js}"></script>
+</head>
+
+<body>
+<!-----header部分------->
+<div class="header">
+    <div class="top">
+        <div class="top1">
+            <a href="welcome.html">登录</a>
+            <a href="register.html">注册</a>
+            <a href="#" th:href="@{/show_cart}"><img src="images/index_img/top1.jpg"
+                                                     th:src="@{/images/index_img/top1.jpg}">我的购物车</a>
+            <a href="#"><img src="images/index_img/top3.jpg" th:src="@{/images/index_img/top3.jpg}">联系我们</a>
+        </div>
+    </div>
+    <!-----logo_search部分------->
+    <div class="logobg">
+        <div class="center">
+            <div class="logo">
+
+            </div>
+            <form id="searchForm">
+                <input type="text" id="searchTxt">
+                <input type="submit" value="搜  索" id="search_btn">
+            </form>
+        </div>
+    </div>
+    <!-----主导航部分------->
+    <div class="bottom">
+        <div class="menu"><a href="#">全部商品分类</a></div>
+        <div class="nav">
+            <a href="index.html" class="now">首页</a>
+        </div>
+    </div>
+
+
+</div>
+<!-----header结束------->
+<!-----商品详情部分------->
+<div class="shopdetails">
+    <!-------放大镜-------->
+    <div id="leftbox">
+        <div id="showbox" th:each="item_photo : ${good.goods_photo_path_infoList}">
+            <img th:src="'/pic/'+${item_photo.path_name}" width="400" height="550"/>
+        </div><!--展示图片盒子-->
+        <!--		<div id="showsum" style="background:#fff;">-->
+
+        <!--        </div>&lt;!&ndash;展示图片里边&ndash;&gt;-->
+        <!--		<p class="showpage" style="background:#fff;">-->
+        <!--&lt;!&ndash; 		 <a href="javascript:void(0);" id="showlast"> < </a>&ndash;&gt;-->
+        <!--&lt;!&ndash;  		 <a href="javascript:void(0);" id="shownext"> > </a>&ndash;&gt;-->
+        <!--		</p>-->
+
+    </div>
+    <!----中间----->
+
+    <div class="centerbox">
+        <p class="imgname" th:text="${good.goods_name}" style="margin-bottom: 8%;">叠叠杯水杯茶杯套杯陶瓷咖啡牛奶杯具套装</p>
+        <p class="Aprice">价格：<samp
+                th:text="${'￥'+ #numbers.formatDecimal(good.goods_price,1,'COMMA',2,'POINT')}">￥89.00</samp></p>
+        <p class="price">促销价：<samp
+                th:text="${'￥'+ #numbers.formatDecimal(good.goods_actual_price,1,'COMMA',2,'POINT')}">￥49.00</samp></p>
+        <p class="youhui">店铺优惠：<samp>购物满两件打八折</samp></p>
+        <p class="kefu">客服：</p>
+        <ul>
+            <li class="kuanshi">款式：</li>
+            <li class="now shopimg"><a href="#" title="酸辣粉"><img src="images/shopdetail/kuanshi01.jpg"
+                                                                 th:src="${'/pic/'+good.goods_photo_path_infoList[0].path_name}"
+                                                                 width="45"></a></li>
+        </ul>
+        <div class="clear"></div>
+        <p class="chima">尺码：</p>
+        <form action="/add_cart" method="post" id="form">
+            <ul>
+                <li class="kuanshi">数量</li>
+                <span class="tb-stock" id="J_Stock">
+                    <a href="javascript:void(0);" title="减1" hidefocus="" class="tb-reduce">-</a>
+                        <input type="text" name="goods_sum" class="tb-text" value="1" maxlength="8" title="请输入购买量">
+                    <a href="javascript:void(0);" class="tb-increase" title="加1">+</a>
+                </span>
+            </ul>
+            <input type="hidden" name="goods_id" th:value="${good.goods_id}">
+        </form>
+        <div class="clear"></div>
+        <p class="buy"><a class="buyyyy" href="javascript:void(0);" id="firstbuy">立即购买</a><a class="buyerCart"
+                                                                                             href="javascript:void(0);">加入购物车</a>
+        </p>
+        <div class="clear"></div>
+        <div class="fenx"><a href="#"><img src="images/shopdetail/tell07.png" th:src="@{/images/shopdetail/tell07.png}"></a>
+        </div>
+        <p class="fuwu">服务承诺：</p>
+        <p class="pay">支付方式：</p>
+    </div>
+
+    <!-----右边------->
+    <div class="rightbox">
+        <p class="name">——热卖商品</p>
+
+    </div>
+
+</div>
+<!-----商品详情部分结束------->
+<!-----商品详情评价部分------->
+<div class="evaluate">
+
+    <div class="classify">
+        <div class="shopim">
+            <p class="name" th:text="${store.store_name}">青蛙工艺家居<img src="images/shopdetail/tell01.png"
+                                                                     th:src="@{/images/shopdetail/tell01.png}"
+                                                                     width="22" height="22"></p>
+            <img th:src="@{/images/shopdetail/tellbottom.png}" src="images/shopdetail/tellbottom.png">
+            <p class="sc"><a href="#">收藏店铺</a></p>
+            <p class="sc"><a href="#">进入店铺</a></p>
+            <div class="search">
+                <input class="left" type="text"/>
+                <input class="right" type="button" style=" cursor:pointer;" value=""/>
+            </div>
+        </div>
+        <div class="shopfl">
+            <p class="name">本店分类</p>
+            <ul>
+                <li><a href="#"><img th:src="@{/images/shopdetail/tell02.png}" src="images/shopdetail/tell02.png"
+                                     width="10" height="10">全部商品</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <div class="tabbedPanels">
+        <ul class="tabs">
+            <li><a href="" class="active">商品详情</a></li>
+            <li><a href="">累计评价</a></li>
+            <li><a href="">商品推荐</a></li>
+        </ul>
+
+        <div class="panelContainer">
+            <div class="panel" id="panel01">
+                <p class="sell">商品描述</p>
+                <ul id="jul">
+                    <div th:each="item_propertity : ${good.goods_property_infoList}">
+                        <li id="jli" th:text="${item_propertity.property_name+':'+item_propertity.property_value}"></li>
+                    </div>
+                </ul>
+                <p class="sell">整体款式</p>
+                <img th:src="${'/pic/'+good.goods_photo_path_infoList[0].path_name}"
+                     src="images/shopdetail/evaluate101.jpg">
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="panel" id="panel02">
+
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<!-----商品详情评价部结束分------->
+
+<!----bottom_页脚部分----->
+<div class="backf">
+    <div id="footer">
+        <ul>
+            <li class="sy">支付方式</li>
+            <li><a href="#">在线支付</a></li>
+            <li><a href="#">货到付款</a></li>
+            <li><a href="#">发票说明</a></li>
+            <li><a href="#">余额宝</a></li>
+
+        </ul>
+        <ul>
+            <li class="sy">购物指南</li>
+            <li><a href="#">免费注册</a></li>
+            <li><a href="#">申请会员</a></li>
+            <li><a href="#">开通支付宝</a></li>
+            <li><a href="#">支付宝充值</a></li>
+        </ul>
+        <ul>
+            <li class="sy">商家服务</li>
+            <li><a href="#">联系我们</a></li>
+            <li><a href="#">客服服务</a></li>
+            <li><a href="#">物流服务</a></li>
+            <li><a href="#">缺货赔付</a></li>
+        </ul>
+        <ul>
+            <li class="sy">关于我们</li>
+            <li><a href="#">知识产权</a></li>
+            <li><a href="#">网站合作</a></li>
+            <li><a href="#">规则意见</a></li>
+            <li><a href="#">帮助中心</a></li>
+        </ul>
+        <ul>
+            <li class="sy">其他服务</li>
+            <li><a href="#">诚聘英才</a></li>
+            <li><a href="#">法律声明</a></li>
+
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        var num = $(".tb-text").val();
+        if (num == 1) {
+            $(".tb-reduce").css("cursor", "not-allowed");
+        }
+    });
+
+    $(function () {
+        $(".buyerCart").on('click', function () {
+            $("#form").attr("action", "/add_cart");
+            $("#form").submit();
+        });
+    });
+
+    $(function () {
+        $(".buyyyy").on('click', function () {
+            $("#form").attr("action", "/go_to_order_forms");
+            $("#form").submit();
+        });
+    });
+
+    $(".tb-increase").on('click', function () {
+        $(".tb-reduce").removeAttr("style");
+        var num = $(".tb-text").val()
+        num = Number(num) + 1;
+        $(".tb-text").val(num);
+    });
+
+    $(".tb-reduce").on('click', function () {
+        var num = $(".tb-text").val();
+        num = Number(num) - 1;
+        if (num == 1) {
+            $(".tb-text").val(num);
+            $(".tb-reduce").css("cursor", "not-allowed");
+        } else {
+            $(".tb-text").val(num);
+        }
+    });
+</script>
+
+</body>
+</html>

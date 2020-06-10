@@ -1,0 +1,355 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+h1.title {
+    font-size: 55px;
+    padding-top: 2.5%;
+    margin-bottom: 5%;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.twoWindows {
+    width: 82%;
+    margin: 0px auto;
+    margin-bottom: 2%;
+}
+
+.mid-class {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.left-side {
+    text-align: center;
+    flex-basis: 65%;
+    box-sizing: border-box;
+}
+
+.left-side h3 {
+    text-transform: uppercase;
+    color: #000;
+    letter-spacing: 0px;
+    font-size: 25px;
+    margin-bottom: 2%;
+}
+
+.left-side p {
+    font-size: 14px;
+    color: #908c8c;
+    letter-spacing: 0px;
+    line-height: 24px;
+    margin-bottom: 5%;
+}
+
+.txt-right-side h2 {
+    text-transform: uppercase;
+    color: #000;
+    letter-spacing: 0px;
+    font-size: 25px;
+    margin-bottom: 2%;
+    padding-bottom: 6%;
+}
+
+.txt-right-side {
+    flex-basis: 35%;
+    box-sizing: border-box;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0px 0px 10px 1px #cccccc;
+    padding: 1.8em 1.8em 1.4em;
+    min-height: 500px;
+    min-width: 450px;
+}
+
+
+.put {
+    display: flex;
+    border: none;
+    border-bottom: 1px solid #a5a2a2;
+    transition: 0.5s all;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+
+.put input[type="text"], .put input[type="password"] {
+    flex-basis: 90%;
+    width: 100%;
+    color: #000;
+    border: none;
+    border-left: 1px solid #a5a2a2;
+    outline: none;
+    background: transparent;
+    transition: 0.5s all;
+    box-sizing: border-box;
+    font-size: 18px;
+    padding-left: 14px;
+    margin-top: 6%;
+    margin-bottom: 2%;
+}
+
+.put:hover {
+    border-bottom: 1px solid #67e878;
+}
+
+.put:hover span {
+    color: #67e878;
+}
+
+.put:hover.put input[type="email"],
+.put:hover.put input[type="password"],
+.put:hover.put input[type="text"] {
+    border-left: 1px solid #67e878;
+}
+
+.put span {
+    flex-basis: 15%;
+    border: none;
+    text-align: center;
+    color: rgba(162, 162, 162, 0.5);
+    transition: 0.5s all;
+    font-size: 22px;
+    margin-top: 6%;
+    margin-bottom: 2%;
+}
+
+button[type=submit] {
+    background: #67e878;
+    outline: none;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+    transition: 0.5s all;
+    box-shadow: 0px 0px 8px 0px #60f574;
+    margin-top: 6%;
+    height: 30px;
+    width: 80%;
+}
+
+.copyrigh-wthree {
+    text-align: center;
+}
+
+.copyrigh-wthree p {
+    color: #000;
+    letter-spacing: 1px;
+}
+
+.copyrigh-wthree p a {
+    color: #60baaf;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+
+.main-two {
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.left-side-forget {
+    position: relative;
+}
+
+.left-side-forget {
+    flex-basis: 50%;
+    text-align: left;
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+.remenber-me, a.for {
+    color: #757272;
+    letter-spacing: 0px;
+    text-transform: capitalize;
+}
+
+.remenber-me {
+    margin-left: 15px;
+}
+
+.right-side-forget {
+    flex-basis: 50%;
+    text-align: right;
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+.right-side-forget a {
+    text-decoration: none;
+}
+
+@media (max-width: 800px) {
+    .twoWindows {
+        width: 58%;
+    }
+
+    .left-side, .txt-right-side {
+        padding: 2em 2em 1.6em;
+    }
+
+    img {
+        width: 384px;
+        height: auto;
+    }
+
+    .main-two {
+        padding-left: 5%;
+        padding-right: 5%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 900px) {
+    h1.title {
+        padding-top: 45px;
+    }
+
+    .put span {
+        font-size: 13px;
+    }
+
+    .put input[type="text"], .put input[type="email"], .put input[type="password"] {
+        padding-left: 14px;
+
+    }
+
+    button[type=submit] {
+        margin: 39px 0px;
+        height: 45px;
+    }
+
+    img {
+        width: 384px;
+        height: auto;
+    }
+
+    .main-two {
+        padding-left: 5%;
+        padding-right: 5%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 991px) {
+    h1.title {
+        font-size: 38px;
+    }
+
+    .left-side, .txt-right-side {
+        padding: 2.3em 2.2em 1.8em;
+    }
+
+    button[type=submit] {
+        padding: 14px 20px;
+    }
+
+    .left-side h3, .txt-right-side h2 {
+        font-size: 20px;
+    }
+
+    img {
+        width: 384px;
+        height: auto;
+    }
+
+    .txt-righti-side {
+        width: 100%;
+    }
+
+    button[type=submit] {
+        margin: 39px 0px;
+        height: 45px;
+    }
+
+    .put {
+        margin-bottom: 20px;
+    }
+
+    .main-two {
+        padding-left: 3%;
+        padding-right: 3%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 1080px) {
+    .copyrigh-wthree p {
+        letter-spacing: 2px;
+    }
+
+    .left-side, .txt-right-side {
+        padding: 2.5em 2.5em 2em;
+    }
+
+    .put {
+        margin: 0px 0px 26px;
+    }
+
+    .w3layouts-two-grids {
+        width: 92%;
+    }
+
+    .copyrigh-wthree {
+        padding: 2.5em 0em 4em;
+    }
+
+    h1.title {
+        font-size: 41px;
+    }
+
+    .left-side h3, .txt-right-side h2 {
+        margin-bottom: 27px;
+    }
+
+    .txt-righti-side {
+        width: 100%;
+    }
+
+    .put {
+        margin-bottom: 20px;
+    }
+
+    .main-two {
+        padding-left: 3%;
+        padding-right: 3%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
