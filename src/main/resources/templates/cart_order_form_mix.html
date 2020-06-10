@@ -262,7 +262,7 @@
                     <td colspan="5">店铺合计(<span class="J_Exclude" style="display: none">不</span>含运费<span
                             class="J_ServiceText" style="display: none">，服务费</span>)：
                         <span class='price g_price '>
- <span>&yen;</span><em class="style-middle-bold-red J_ShopTotal" th:text="${money}">630.00</em>
+ <span>&yen;</span><em class="style-middle-bold-red J_ShopTotal" th:text="${order.order_money}">630.00</em>
   </span>
 
                     </td>
@@ -304,7 +304,7 @@
             <div class="J_AddressConfirm address-confirm">
                 <div class="point-in">
                     <em class="t">实付款：</em> <span class='price g_price '>
-                     <span>&yen;</span><em class="style-large-bold-red" id="J_ActualFee">630.00</em>
+                     <span>&yen;</span><em class="style-large-bold-red" id="J_ActualFee" th:text="${money}">630.00</em>
                       </span>
                 </div>
                 <div class="kd-popup pop-back" style="margin-bottom: 0;padding: 0">

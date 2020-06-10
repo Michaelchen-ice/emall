@@ -149,6 +149,17 @@ public class C_Order {
         //写死了后面请同学们自己改好
 //        int b_s_id = 1;
         List<Order_Info> order_infoList = s_order.getOrder_InfoList(b_s_id);
+        for (Order_Info orderInfo : order_infoList) {
+            Store_Info store_info = s_store_info.getStoreInfo(orderInfo.getStore_id());
+            orderInfo.setStore_name(store_info.getStore_name());
+            for (Order_Item_Info o : orderInfo.getOrder_item_infoList()) {
+                int goods_id = o.getGoods_id();
+                Goods_Info goods_info = s_goods_info.getAGoods_Info(goods_id);
+                o.setGoods_name(goods_info.getGoods_name());
+                o.setGoods_photo_path(goods_info.getGoods_photo_path_infoList().get(0).getPath_name());
+                o.setGoods_actual_price(goods_info.getGoods_actual_price());
+            }
+        }
         model.addAttribute("order_info_list", order_infoList);
         return "order_info_list";
     }
