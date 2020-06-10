@@ -7,9 +7,36 @@ public class Order_Item_Info {
     private int order_id;
     private Date order_item_time;
     private int goods_id;
+    private String goods_name;
     private int goods_sum;
+    private float goods_actual_price;
     private float goods_money;
     private String goods_property;
+    private String goods_photo_path;
+
+    public float getGoods_actual_price() {
+        return goods_actual_price;
+    }
+
+    public void setGoods_actual_price(float goods_actual_price) {
+        this.goods_actual_price = goods_actual_price;
+    }
+
+    public String getGoods_name() {
+        return goods_name;
+    }
+
+    public void setGoods_name(String goods_name) {
+        this.goods_name = goods_name;
+    }
+
+    public String getGoods_photo_path() {
+        return goods_photo_path;
+    }
+
+    public void setGoods_photo_path(String goods_photo_path) {
+        this.goods_photo_path = goods_photo_path;
+    }
 
     public int getOrder_item_id() {
         return order_item_id;

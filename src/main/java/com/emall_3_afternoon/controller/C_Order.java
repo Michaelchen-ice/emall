@@ -51,9 +51,8 @@ public class C_Order {
         return "cart_order_form";
     }
 
-    @ResponseBody
     @RequestMapping("go_to_cart_order_form")
-    public List<Order_Info> getCartForm(HttpServletRequest request, Model model, @RequestParam("json") String str) {
+    public String getCartForm(HttpServletRequest request, Model model, @RequestParam("json") String str) {
         HttpSession session = request.getSession();
         int b_s_id = Integer.parseInt(session.getAttribute("b_s_id").toString());
         JSONObject object = JSON.parseObject(str);
@@ -67,10 +66,18 @@ public class C_Order {
         int[] id = new int[ids.size()];
         int[] sum = new int[sums.size()];
         jsonToArrays(id, sum, ids, sums);
-        return initMix(id, sum, b_s_id);
+        List<Order_Info> order_infoList = initMix(id, sum, b_s_id);
+        List address_info_list = s_address_info.getAddressList(b_s_id);
+        double money = 0.0;
+        for (Order_Info info : order_infoList) {
+            money += info.getOrder_money();
+        }
+        model.addAttribute("orders", order_infoList);
+        model.addAttribute("addrs", address_info_list);
+        model.addAttribute("money", money);
+        return "cart_order_form_mix";
     }
 
-    //喵
     public List<Order_Info> initMix(int[] id, int sum[], int b_s_id) {
         int store_id = -1;
         int store_id_new = 0;
@@ -87,12 +94,14 @@ public class C_Order {
             Date now = new Date();//调用时间函数生成
             order_item_info.setOrder_item_time(now); //order_time
             order_item_info.setGoods_id(good_id); //good_id
+            order_item_info.setGoods_name(goods_info.getGoods_name());
+            order_item_info.setGoods_actual_price(goods_info.getGoods_actual_price());
             order_item_info.setGoods_sum(sum[i]); //good_count
             order_item_info.setGoods_money(goods_info.getGoods_actual_price() * sum[i]); //good_sum_money
             System.out.println(goods_info.toString());
             order_item_info.setGoods_property(goods_info.getGoods_describe()); //good_describe
             System.out.println(order_item_info.getGoods_property());
-
+            order_item_info.setGoods_photo_path(goods_info.getGoods_photo_path_infoList().get(0).getPath_name());
             //判断是否相同店铺
             store_id_new = goods_info.getStore_id();
             //不相同
@@ -102,6 +111,8 @@ public class C_Order {
                 store_id = goods_info.getStore_id();
                 Order_Info order_info = new Order_Info();
                 order_info.setStore_id(store_id); //store_id
+                Store_Info store_info = s_store_info.getStoreInfo(store_id);
+                order_info.setStore_name(store_info.getStore_name());
                 double goods_money = order_item_info.getGoods_money();
                 sum_store += goods_money;
                 order_info.setOrder_money((float) sum_store); //good_money
@@ -142,9 +153,32 @@ public class C_Order {
         return "order_info_list";
     }
 
+    @ResponseBody
+    @RequestMapping(value = "carts_to_order", method = RequestMethod.POST)
+    public List<Order_Info> cartsToOrder(HttpServletRequest request, RedirectAttributes attributes, @RequestParam("json") String str) {
+        HttpSession session = request.getSession();
+        int b_s_id = Integer.parseInt(session.getAttribute("b_s_id").toString());
+        Logistics_Info logistics_info = initLogistics_Info(request);
+        JSONObject object = JSON.parseObject(str);
+        String json = object.getString("json");
+        JSONObject arrays = JSON.parseObject(json);
+        System.out.println(json);
+        JSONArray ids = arrays.getJSONArray("id");
+        JSONArray sums = arrays.getJSONArray("sum");
+        System.out.println(ids.toJSONString());
+        System.out.println(sums.toJSONString());
+        int[] id = new int[ids.size()];
+        int[] sum = new int[sums.size()];
+        jsonToArrays(id, sum, ids, sums);
+        System.out.println(Arrays.toString(id));
+        System.out.println(Arrays.toString(sum));
+        return initMix(id, sum, b_s_id);
+    }
+
     @RequestMapping(value = "goods_to_order", method = RequestMethod.POST)
     public String goodsToOrder(HttpServletRequest request, RedirectAttributes attributes) {
-        int b_s_id = 1;
+        HttpSession session = request.getSession();
+        int b_s_id = Integer.parseInt(session.getAttribute("b_s_id").toString());
         Order_Item_Info order_item_info = initOrder_Item_Info(request);
         Order_Info order_info = initOrder_Info(request, b_s_id);
         Logistics_Info logistics_info = initLogistics_Info(request);

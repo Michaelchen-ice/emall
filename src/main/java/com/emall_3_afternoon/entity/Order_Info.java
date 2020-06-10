@@ -14,6 +14,7 @@ public class Order_Info {
     private Date order_time;
     //store_id知道了卖家是谁。
     private int store_id;
+    private String store_name;
     private int order_status;
     private String pay_way;
     private int pay_status;
@@ -27,6 +28,14 @@ public class Order_Info {
 
     public void setOrder_item_infoList(List<Order_Item_Info> order_item_infoList) {
         this.order_item_infoList = order_item_infoList;
+    }
+
+    public String getStore_name() {
+        return store_name;
+    }
+
+    public void setStore_name(String store_name) {
+        this.store_name = store_name;
     }
 
     public Date getOrder_time() {
