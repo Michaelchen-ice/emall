@@ -95,7 +95,7 @@ public class S_Order {
 
     //3:购物车导入到订单
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
-    int cartToOrder(List<Order_Info> order_infoList, Logistics_Info logistics_info) {
+    public int cartToOrder(List<Order_Info> order_infoList, Logistics_Info logistics_info) {
         int flag = 0;
         //先进行第一重循环，把order_info循环插入
         for (Order_Info order_info : order_infoList) {

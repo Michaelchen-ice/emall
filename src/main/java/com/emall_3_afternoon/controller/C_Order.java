@@ -153,9 +153,8 @@ public class C_Order {
         return "order_info_list";
     }
 
-    @ResponseBody
     @RequestMapping(value = "carts_to_order", method = RequestMethod.POST)
-    public List<Order_Info> cartsToOrder(HttpServletRequest request, RedirectAttributes attributes, @RequestParam("json") String str) {
+    public String cartsToOrder(HttpServletRequest request, RedirectAttributes attributes, @RequestParam("json") String str) {
         HttpSession session = request.getSession();
         int b_s_id = Integer.parseInt(session.getAttribute("b_s_id").toString());
         Logistics_Info logistics_info = initLogistics_Info(request);
@@ -172,7 +171,10 @@ public class C_Order {
         jsonToArrays(id, sum, ids, sums);
         System.out.println(Arrays.toString(id));
         System.out.println(Arrays.toString(sum));
-        return initMix(id, sum, b_s_id);
+        List<Order_Info> order_infoList = initMix(id, sum, b_s_id);
+        s_order.cartToOrder(order_infoList, logistics_info);
+        attributes.addAttribute("b_s_id", b_s_id);
+        return "redirect:get_order_list_by_b_s_id";
     }
 
     @RequestMapping(value = "goods_to_order", method = RequestMethod.POST)
