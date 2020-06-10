@@ -157,9 +157,10 @@ public class C_Order {
                 Goods_Info goods_info = s_goods_info.getAGoods_Info(goods_id);
                 o.setGoods_name(goods_info.getGoods_name());
                 o.setGoods_photo_path(goods_info.getGoods_photo_path_infoList().get(0).getPath_name());
-                o.setGoods_actual_price(goods_info.getGoods_actual_price());
             }
         }
+        System.out.println(order_infoList.toString());
+        System.out.println(order_infoList.get(0).getOrder_item_infoList().toString());
         model.addAttribute("order_info_list", order_infoList);
         return "order_info_list";
     }

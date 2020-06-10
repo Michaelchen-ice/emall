@@ -1,10 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mall_normal.css}">
+    <link th:href="@{/css/all.css}" rel="stylesheet">
+    <link th:href="@{/css/mall.css}" rel="stylesheet">
+    <style>
+        .xxx:hover {
+            color: red;
+        }
+
+        .xxx {
+            color: black;
+        }
+
+        .mmm {
+            color: red;
+            text-decoration: none;
+        }
+
+        .mmm:hover {
+            color: red;
+            text-decoration: none;
+            cursor: none;
+        }
+    </style>
 </head>
 <body>
-喵喵喵
+<div class="bbb">
+    <div style="width: 55%;height:100%;margin-left: 21%">
+			<span style="">
+                <a href="" th:href="@{/user_index}" class="ttt">
+					<i class="fas fa-user" style="margin-right: 3px" th:text="${session.username}"></i>
+				</a>
+			</span>
+        <span style="float: right;">
+				<a href="" th:href="@{/show_cart}" class="ttt" style="">
+					<i class="fas fa-shopping-cart" style="margin-right: 3px"></i>
+					购物车
+				</a>
+			</span>
+    </div>
+</div>
+<div class="hea">
+    <div style="width: 65%;height:100%;margin-left: 10%">
+        <img th:src="@{/pic/logo.png}" style="margin-left: 17%;padding-top: 0px" alt="">
+        <span><a href="" th:href="@{/showGood_index}" class="la">首页</a></span>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-2">
+            <div class="method_title">全部功能</div>
+            <div><a href="" th:href="@{/get_order_list_by_b_s_id}" class="method_name">我的订单</a></div>
+            <div><a href="" th:href="@{/get_address_list}" class="method_name">我的地址</a></div>
+            <div><a href="" class="method_name">我的小店</a></div>
+            <div><a href="" class="method_name">个人中心</a></div>
+        </div>
+        <div class="col-md-10" style="margin-top: 3%;">
+            <table style="width: 100%">
+                <tr style="font-size:12px;text-align:center;line-height:18px;height: 39px;border: 1px solid rgb(232, 232, 232);background-color:#f5f5f5;">
+                    <th width="40%">宝贝</th>
+                    <th width="20%">单价</th>
+                    <th width="20%">数量</th>
+                    <th width="20%">实付</th>
+                </tr>
+            </table>
+            <table style="width: 100%;margin-top: 2%;" th:each="item : ${order_info_list}">
+                <tr style="font-size:12px;text-align:center;line-height:18px;height: 39px;border: 1px solid rgb(232, 232, 232);background-color:#f5f5f5;">
+                    <th width="40%">
+                        <span th:text="${#dates.format(item.order_time, 'yyyy-MM-dd')}">2020-06-02</span>
+                        <span style="margin-left: 15px;font-weight: normal;" th:text="'订单号：'+${item.order_no}">订单号：1591724095x</span>
+                    </th>
+                    <th width="20%" colspan="2" th:text="${item.store_name}">深海视觉</th>
+                    <th width="20%"></th>
+                </tr>
+                <tr th:each="goods : ${item.order_item_infoList}"
+                    style="font-size:12px;text-align:center;line-height:18px;height: 39px;border: 1px solid rgb(232, 232, 232);">
+                    <td style="text-align:left;" width="40%">
+                        <span style="margin-left: 15%;"><img style="margin-top: 5px;margin-bottom: 5px;"
+                                                             src="/pic/aaa.jpg"
+                                                             th:src="'/pic/'+${goods.goods_photo_path}" width="80"
+                                                             alt=""></span>
+                        <span style="margin-left: 5%"
+                              th:text="${#strings.abbreviate(goods.goods_name,18)}">头秃也要吃的酸辣粉</span>
+                    </td>
+                    <td width="20%" th:text="'￥'+${goods.goods_actual_price}">￥19.90</td>
+                    <td width="20%" th:text="${goods.goods_sum}">2</td>
+                    <td width="20%" th:text="'￥'+${goods.goods_money}">￥39.80</td>
+                </tr>
+                <tr style="font-size:12px;text-align:center;line-height:18px;height: 39px;border: 1px solid rgb(232, 232, 232);">
+                    <td></td>
+                    <td></td>
+                    <td>合计：</td>
+                    <td th:text="'￥'+${item.order_money}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

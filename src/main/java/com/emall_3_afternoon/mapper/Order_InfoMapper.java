@@ -26,4 +26,7 @@ public interface Order_InfoMapper {
             "values(#{order_id}, #{order_no}, #{order_money}, #{order_time}, #{store_id}, " +
             "#{order_status}, #{pay_way}, #{pay_status}, #{pay_time}, #{b_s_id})")
     int insertOrder_Info(Order_Info order_info);
+
+    @Select("SELECT LAST_INSERT_ID() AS order_id FROM order_info")
+    public int[] selectLastInsert();
 }
